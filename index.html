@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Application</title>
+    <link rel="icon" href="images/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body bgcolor="#FEF593">
+
+<img src="images/logo.png" width="100" alt="">
+ 
+<form action = "getdata" method = "POST">
+    <table align="center" border="0" width="50%" bgcolor="#DAE0E2">
+        <caption>
+            <h1>Banking Application</h1>
+        </caption>
+        <tr>
+            <td>1. Account No.</td>
+            <td><input type="text" name="AccountNo" maxlength="16" size="30" pattern="[0-9]+" title= "16 digit account no" placeholder="📝Enter Acount No (16 Digits)"  required autocomplete="off"></td>
+        </tr>
+        <tr>
+            <td>2. Account Holder Name</td>
+            <td><input type="text" name="HolderName" maxlength="50" size="50" pattern="[a-zA-Z ]+" title="Only alphabets up to 50 letters"  placeholder="😀 Enter Acount Holder Name"  required autocomplete="off"></td>
+        </tr>
+        <tr>
+            <td>3. Email</td>
+            <td><input type="email" name="Email" size="50"  placeholder="📩 Enter Email Id" ></td>
+        </tr>
+        <tr>
+            <td>4. City</td>
+            <td><select name="City">
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Allahabad">Allahabad</option>
+                    <option value="Agra">Agra</option>
+                    <option value="Kanpur">Kanpur</option>
+                </select> </td>
+        </tr>
+        <tr>
+            <td>5. tate</td>
+            <td> <select name="State">
+                    <option value="Utter Pradesh">Utter Pradesh</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td>6. Choice of Service</td>
+            <td> <input type="checkbox" value="PassBookViewing">Pass Book Viewing <br>
+                 <input type="checkbox" value="MoneyTransfer">Money Transfer <br>
+                 <input type="checkbox" value="CheckBookIssue">Check Book Issue <br>
+                 <input type="checkbox" value="BankDraftIssue">Bank Draft Issue
+
+            </td>
+        </tr>
+        <tr align="center"> 
+            <td colspan="2"><input type="submit">
+                <input type="Reset"> </td>
+        </tr>
+
+    </table>
+</form>
+ 
+</body>
+</html>

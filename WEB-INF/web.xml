@@ -1,0 +1,12 @@
+<web-app>
+
+<servlet>
+   <servlet-name>Servlet1</servlet-name>
+   <servlet-class>InputData</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>Servlet1</servlet-name>
+   <url-pattern>/getdata</url-pattern>
+</servlet-mapping>
+</web-app>
