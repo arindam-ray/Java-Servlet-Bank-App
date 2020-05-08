@@ -8,46 +8,61 @@ import java.util.*;
 // Extend HttpServlet class
 public class InputData extends HttpServlet {
 
-   // Method to handle GET method request.
-   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+   private String docType;
+   private String title;
+
+   // --------------------------------------- initialization ------------------
+   public void init() throws ServletException {
+
+      docType = "<!DOCTYPE html>";
+      title = "Bank Application Data ";
+   }
+
+   // Method to handle POST method request.
+   public void doPost(final HttpServletRequest request, final HttpServletResponse response)
+         throws ServletException, IOException {
 
       // Set response content type
       response.setContentType("text/html");
+      final PrintWriter out = response.getWriter();
 
-      PrintWriter out = response.getWriter();
-      String title = "Registration Form Data - Read All Fields";
-      String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
+      final String AccountNo = request.getParameter("AccountNo");
+      final String HolderName = request.getParameter("HolderName");
+      final String email = request.getParameter("email");
+      final String city = request.getParameter("city");
+      final String state = request.getParameter("state");
+      String PassBookViewing = request.getParameter("PassBookViewing");
+      if (PassBookViewing == null)
+         PassBookViewing = "No";
 
-      out.println(docType + "<html>\n" + "<head><title>" + title + "</title></head>\n"
-            + "<body bgcolor = \"#E3F3FB\">\n" + "<h1 align = \"center\">" + title + "</h1>\n"
-            + "<table width = \"50%\" border = \"1\" align = \"center\">\n" + "<tr bgcolor = \"#949494\">\n"
-            + "<th>Param Name</th>" + "<th>Param Value(s)</th>\n" + "</tr>\n");
+      String MoneyTransfer = request.getParameter("MoneyTransfer");
 
-      Enumeration paramNames = request.getParameterNames();
+      if (MoneyTransfer == null)
+         MoneyTransfer = "No";
 
-      while (paramNames.hasMoreElements()) {
-         String paramName = (String) paramNames.nextElement();
-         out.print("<tr><td>" + paramName + "</td>\n<td>");
-         String[] paramValues = request.getParameterValues(paramName);
+      String CheckBookIssue = request.getParameter("CheckBookIssue");
+      if (CheckBookIssue == null)
+         CheckBookIssue = "No";
 
-         // Read single valued data
-         if (paramValues.length == 1) {
-            String paramValue = paramValues[0];
-            if (paramValue.length() == 0)
-               out.println("<i>No Value</i>");
-            else
-               out.println(paramValue);
-         } else {
-            // Read multiple valued data
-            out.println("<ul>");
+      String BankDraftIssue = request.getParameter("BankDraftIssue");
+      if (BankDraftIssue == null)
+         BankDraftIssue = "No";
 
-            for (int i = 0; i < paramValues.length; i++) {
-               out.println("<li>" + paramValues[i]);
-            }
-            out.println("</ul>");
-         }
-      }
-      out.println("</tr>\n</table>\n</body></html>");
+      out.println(docType + "<html> " + "<head><title>" + title + "</title></head> " + "<body bgcolor = '#FEF593'>"
+            + "<h1 align =  center>" + title + "</h1>" + "<table width = '50%' border = '1' align = 'center'>"
+            + "<tr bgcolor = '#949494'>" + "<th>Field Name</th>" + "<th>Field Value</th>" + "</tr>");
+
+      out.print("<tr><td>" + "Account No" + "</td> <td>" + AccountNo + "</td></tr>");
+      out.print("<tr><td>" + "Name      " + "</td> <td>" + HolderName + "</td></tr>");
+      out.print("<tr><td>" + "Email     " + "</td> <td>" + email + "</td></tr>");
+      out.print("<tr><td>" + "City" + "</td> <td>" + city + "</td></tr>");
+      out.print("<tr><td>" + "State" + "</td> <td>" + state + "</td></tr>");
+      out.print("<tr><td>" + "Passbook View" + "</td> <td>" + PassBookViewing + "</td></tr>");
+      out.print("<tr><td>" + "Money Transfer" + "</td> <td>" + MoneyTransfer + "</td></tr>");
+      out.print("<tr><td>" + "Checkbook Issue" + "</td> <td>" + CheckBookIssue + "</td></tr>");
+      out.print("<tr><td>" + "Bank Draft Issue" + "</td> <td>" + BankDraftIssue + "</td></tr>");
+
+      out.println("</table> </body></html>");
    }
 
 }
